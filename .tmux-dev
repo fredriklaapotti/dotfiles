@@ -1,0 +1,12 @@
+#!/bin/sh
+DEVDIR="/home/fredrik/projects/webgame/webgame01"
+tmux new-session -d
+tmux split-window -h -p 20
+tmux split-window -v -p 30
+tmux select-pane -t 1
+tmux send-keys "cd ${DEVDIR} && db" C-m
+tmux select-pane -t 2
+tmux send-keys "cd ${DEVDIR} && php artisan serve" C-m
+tmux select-pane -t 0
+tmux send-keys "cd ${DEVDIR}" C-m
+tmux attach-session
